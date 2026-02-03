@@ -29,7 +29,7 @@ print("What is the IMAP server?")
 server = input("Server: ")
 
 print("")
-print("You should now create any mailboxes you will want Ray to move emails to.")
+print("You should now create any mailboxes you will want Ray to move emails to (if you haven't already done so).")
 print("Press return when you have created them.")
 input("")
 
