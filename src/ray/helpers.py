@@ -10,7 +10,8 @@ from .config import console, saveDir
 
 
 def runSetup():
-    # Email Setup console.print(Panel("[bold cyan]Step1: Email Configuration[/bold cyan]", title="Account Setup", border_style="cyan"))
+    # Email Setup
+    console.print(Panel("[bold cyan]Step1: Email Configuration[/bold cyan]", title="Account Setup", border_style="cyan"))
     address = Prompt.ask("[cyan]What is your email address?[/cyan]")
 
     console.print()
@@ -21,7 +22,8 @@ def runSetup():
     console.print()
     server = Prompt.ask("[cyan]What is the IMAP server?[/cyan]")
 
-    # Mailbox Setup console.print()
+    # Mailbox Setup
+    console.print()
     console.print(Panel("[bold yellow]Step2: Mailbox Setup[/bold yellow]", title="Mailbox Configuration",
                         border_style="yellow"))
     console.print(
@@ -49,7 +51,9 @@ def runSetup():
     # Save Configuration
     from .load import saveConfig
     saveConfig(address, server, password, mailboxes, sortType)
-    # Summary console.print()
+    
+    # Summary
+    console.print()
     summary_table = Table(title="Configuration Summary", box=box.ROUNDED, show_header=False, border_style="cyan")
     summary_table.add_column("Key", style="cyan")
     summary_table.add_column("Value", style="green")
@@ -70,7 +74,7 @@ def start():
     parser = argparse.ArgumentParser(description="A simple to use email sorter")
 
     # 2. Add arguments
-    parser.add_argument("setup", nargs='?', help="Run the setup script")  # make it optional
+    parser.add_argument("-s", "--setup", action="store_true", help="Run the setup script")
     # 3. Parse arguments
     args = parser.parse_args()
 

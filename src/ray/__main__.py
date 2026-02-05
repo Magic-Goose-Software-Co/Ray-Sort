@@ -4,7 +4,7 @@ from datetime import datetime
 from rich.live import Live
 from rich.progress import Progress, SpinnerColumn, TextColumn, BarColumn
 
-from ray.config import saveDir, console
+from .config import saveDir, console
 from . import load
 from . import mail
 from . import sort
@@ -73,12 +73,16 @@ def runApp():
                 progress.update(task, description=f"Sorting \"{email['subject'][:50]}...\"")
                 destination = sortFunc(email)
                 account.moveEmail(email["uid"], "INBOX", destination)
-                trainingMail[destination].append(email)
+                try:
+                    trainingMail[destination].append(email)
+                except KeyError:
+                    trainingMail[destination] = [email]
                 console.log(
-                    f"[light_blue][INFO] Moved \"[/green]{email['subject']}[light_blue]\" (sender \"[/green]{email['sender']}[green]\") to \"{destination}\".[/green]")
+                    f"[light_blue][INFO] Moved \"[green]{email['subject']}[/green]\" (sender \"[green]{email['sender']}[/green]\") to \"[green]{destination}[/green]\".[/light_blue]")
                 progress.advance(task)
     else:
         console.print("[yellow]No new emails found, ending execution.[/yellow]")
+        account.logout()
         return
 
     with (saveDir / "emails.json").open("w") as emailsFile:
