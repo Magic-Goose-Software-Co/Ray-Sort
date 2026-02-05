@@ -15,7 +15,7 @@ def getPassword():
 
 
 def getEmails(file="emails.json"):
-    if saveDir / file not in os.listdir():
+    if not (saveDir / file).is_file():
         return {"lastRun": datetime.now().strftime("%Y-%m-%d %H:%M:%S"), "emails": {}}
     with (saveDir / file).open("r") as emailsFile:
         return json.load(emailsFile)
