@@ -13,9 +13,9 @@ Download the repo
 git clone https://github.com/magic-goose-software-co/ray.git
 ```
 
-Run setup.py (You don't have to `cd` into it)
+Run setup command.
 ```bash
-python ray/setup.py
+ray
 ```
 and answer its five questions.
 
@@ -23,4 +23,13 @@ and answer its five questions.
 
 ## Usage
 
-Move some emails into the mailboxes you want it to sort mail into and run `python ray`.
+Move some emails into the mailboxes you want it to sort mail into and run `ray`.
+
+---
+
+## Recreate Config
+
+If you need to recreate the configuration for any reason, run:
+```bash
+ray config
+```
