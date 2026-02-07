@@ -10,7 +10,7 @@ A simple to use email sorter named after [Ray Tomlinson](https://en.wikipedia.or
 
 Download the repo
 ```bash
-git clone https://github.com/magic-goose-software-co/ray.git
+git clone https://github.com/magic-goose-software-co/ray-sort.git
 ```
 
 Run setup.py (You don't have to `cd` into it)
